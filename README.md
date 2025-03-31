@@ -33,18 +33,16 @@ sudo make install  # Optional
 #include <kalman_filter/KalmanFilter.hpp>  
 
 int main() {  
-    // Define state (position, velocity) and measurement (position only)  
-    KalmanFilter kf(2, 1);  
-
-    // Set dynamics: x_k+1 = A * x_k + B * u_k + noise  
-    kf.setTransitionMatrix(A);  
-    kf.setMeasurementMatrix(H);  
-    kf.setProcessNoise(Q);  
-    kf.setMeasurementNoise(R);  
-
-    // Predict & update  
-    Eigen::VectorXd state_estimate = kf.predict(u);  
-    state_estimate = kf.update(z_measured);  
+    kalman_filter kf(0.001, 0.1);
+	
+	double data_before[10] = {0, 1, 20, 24, 19, 50, 19, 24, 21, 18};
+	double data_after;
+	
+	for (int i=0; i<10; i++)
+	{
+		kf.kalman_filter_1d(data_before[i], data_after);
+		cout << i << ": " << data_before[i] << ", " << data_after << endl;
+	}
 
     return 0;  
 }  
