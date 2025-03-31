@@ -17,11 +17,9 @@ This library provides an efficient and modular implementation of the **Kalman Fi
 
 ### **C++ (Eigen Required)**  
 ```bash  
-git clone https://github.com/yourusername/kalman-filter.git  
 cd kalman-filter  
 mkdir build && cd build  
 cmake .. && make  
-sudo make install  # Optional  
 ``` 
 
 ---
@@ -30,7 +28,6 @@ sudo make install  # Optional
 
 ### **C++ Example**  
 ```cpp  
-#include <kalman_filter/KalmanFilter.hpp>  
 
 int main() {  
     kalman_filter kf(0.001, 0.1);
